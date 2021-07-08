@@ -1,26 +1,24 @@
 import React from "react";
-import { Tag } from "grommet-controls";
+import { Badge } from "@chakra-ui/react";
 
 export default function StatusBadge({ status }) {
 	return (
-		<Tag
-			round
-			background={getColorForStatus(status)}
-			label={getTaskStatusDisplayName(status)}
-		/>
+		<Badge ml='1.5' colorScheme={getColorForStatus(status)}>
+			{getTaskStatusDisplayName(status)}
+		</Badge>
 	);
 }
 
 const getColorForStatus = (status) => {
 	switch (status) {
 		case "Open":
-			return "accent-3";
+			return "blue";
 		case "InProgress":
-			return "status-warning";
+			return "orange";
 		case "Complete":
-			return "status-ok";
+			return "green";
 		default:
-			return "status-disabled";
+			return "gray";
 	}
 };
 
