@@ -62,7 +62,7 @@ function TaskList({ currentProject }) {
 
 	return loading ? (
 		<Box margin="xlarge" align="center" justify="center">
-			<Spinner />
+			<Spinner size='large' />
 		</Box>
 	) : (
 		<Box gap='small'>

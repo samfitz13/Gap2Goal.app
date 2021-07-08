@@ -23,16 +23,18 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 					<Box basis="medium" pad="small" gap="medium" width="medium">
 						<TaskContent task={task} />
 						{task.status === "Open" && (
-							<ChangeTaskStatusButton
-								task={task}
-								fromStatus="Open"
-								toStatus="InProgress"
-							>
-								<Heading level="4">Start Progress</Heading>
-							</ChangeTaskStatusButton>
+							<Box pad="medium">
+								<ChangeTaskStatusButton
+									task={task}
+									fromStatus="Open"
+									toStatus="InProgress"
+								>
+									<Heading level="4">Start Progress</Heading>
+								</ChangeTaskStatusButton>
+							</Box>
 						)}
 						{task.status === "InProgress" && (
-							<>
+							<Box pad="medium">
 								<ChangeTaskStatusButton
 									task={task}
 									fromStatus="InProgress"
@@ -47,16 +49,18 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 								>
 									<Heading level="4">Complete Task</Heading>
 								</ChangeTaskStatusButton>
-							</>
+							</Box>
 						)}
 						{task.status === "Complete" && (
-							<ChangeTaskStatusButton
-								task={task}
-								fromStatus="Complete"
-								toStatus="InProgress"
-							>
-								<Heading level="4">Resume Task</Heading>
-							</ChangeTaskStatusButton>
+							<Box pad="medium">
+								<ChangeTaskStatusButton
+									task={task}
+									fromStatus="Complete"
+									toStatus="InProgress"
+								>
+									<Heading level="4">Resume Task</Heading>
+								</ChangeTaskStatusButton>
+							</Box>
 						)}
 						{/* TODO: Add Edit and Delete */}
 						<Box justify="evenly" direction="row">

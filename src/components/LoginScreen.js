@@ -66,7 +66,7 @@ export default function LoginScreen() {
 		<Box responsive>
 			{isLoggingIn ? (
 				<Box margin='xlarge' align="center" justify="center">
-					<Spinner />
+					<Spinner size='large' />
 				</Box>
 			) : (
 				<Box

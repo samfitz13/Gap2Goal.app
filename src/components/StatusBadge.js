@@ -4,7 +4,6 @@ import { Tag } from "grommet-controls";
 export default function StatusBadge({ status }) {
 	return (
 		<Tag
-			
 			round
 			background={getColorForStatus(status)}
 			label={getTaskStatusDisplayName(status)}

@@ -9,7 +9,7 @@ export default function useChangeTaskStatusButton(project) {
 	const { updateTask } = useTaskMutations(project);
 	const ChangeTaskStatusButton = ({ task, fromStatus, toStatus, children }) => {
 		return (
-			<Box width='medium' hoverIndicator onClick={() => updateTask(task, { status: toStatus })}>
+			<Box fill onClick={() => updateTask(task, { status: toStatus })}>
 					{children}
 					<StatusChange from={fromStatus} to={toStatus} />
 			</Box>

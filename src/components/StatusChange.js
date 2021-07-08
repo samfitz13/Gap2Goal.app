@@ -7,7 +7,7 @@ import StatusBadge from "./StatusBadge";
 
 export default function StatusChange({ from, to }) {
   return (
-    <Box direction='row'>
+    <Box direction='row' gap='small'>
       <StatusBadge status={from} />
       <LinkNext />      
       <StatusBadge status={to} />
