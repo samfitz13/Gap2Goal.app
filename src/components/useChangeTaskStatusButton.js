@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "grommet";
+import { Box, useColorModeValue } from "@chakra-ui/react";
 
 import StatusChange from "./StatusChange";
 import useTaskMutations from "../graphql/useTaskMutations";
@@ -9,7 +9,16 @@ export default function useChangeTaskStatusButton(project) {
 	const { updateTask } = useTaskMutations(project);
 	const ChangeTaskStatusButton = ({ task, fromStatus, toStatus, children }) => {
 		return (
-			<Box fill onClick={() => updateTask(task, { status: toStatus })}>
+			<Box
+			mx="auto"
+			px={8}
+			py={4}
+			maxW="2xl"
+			shadow="lg"
+			borderWidth="1px"
+			onClick={() => updateTask(task, { status: toStatus })}
+			bg={useColorModeValue("white", "gray.800")}
+		>
 					{children}
 					<StatusChange from={fromStatus} to={toStatus} />
 			</Box>

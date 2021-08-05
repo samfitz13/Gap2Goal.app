@@ -1,11 +1,11 @@
 import React from "react";
-import { Badge } from "@chakra-ui/react";
+import { Tag } from "@chakra-ui/react";
 
 export default function StatusBadge({ status }) {
 	return (
-		<Badge ml='1.5' colorScheme={getColorForStatus(status)}>
+		<Tag colorScheme={getColorForStatus(status)}>
 			{getTaskStatusDisplayName(status)}
-		</Badge>
+		</Tag>
 	);
 }
 

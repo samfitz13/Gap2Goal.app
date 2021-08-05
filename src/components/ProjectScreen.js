@@ -1,5 +1,15 @@
 import React from "react";
-import { Box, Button, Heading, Spinner, Text, TextInput } from "grommet";
+import {
+	Box,
+	Button,
+	Flex,
+	Heading,
+	HStack,
+	Input,
+	Spinner,
+	Stack,
+	Text,
+} from "@chakra-ui/react";
 
 import useTasks from "../graphql/useTasks";
 import TaskContent from "./TaskContent";
@@ -62,73 +72,74 @@ function TaskList({ currentProject }) {
 
 	return loading ? (
 		<Box margin="xlarge" align="center" justify="center">
-			<Spinner size='large' />
+			<Spinner
+				thickness="4px"
+				speed="0.65s"
+				emptyColor="gray.200"
+				color="blue.500"
+				size="xl"
+			/>
 		</Box>
 	) : (
-		<Box gap='small'>
-			{tasks.length === 0 ? (
-				<Box>
-					<Heading>No Tasks</Heading>
-					<Text>Click the button below to add a task to this project</Text>
-				</Box>
-			) : (
-				tasks.map((task) => (
-					<Box hoverIndicator round onClick={() => setSelectedTaskId(task._id)}>
-						<TaskContent task={task} />
+		<Flex>
+			<Stack spacing={4}>
+				{tasks.length === 0 ? (
+					<Box>
+						<Heading>No Tasks</Heading>
+						<Text>Click the button below to add a task to this project</Text>
 					</Box>
-				))
-			)}
-			{draftTask ? (
-				<Box pad="medium">
-					<TextInput
-						type="text"
-						a11yTitle="task Name"
-						placeholder="Task Name"
-						onChange={(e) => {
-							setDraftTaskName(e.target.value);
-						}}
-						value={draftTask.name}
-					/>
-					<Box
-						justify="center"
-						direction="row-responsive"
-						gap="medium"
-						margin="small"
-					>
-						<Button
+				) : (
+					tasks.map((task) => (
+						<Box
 							hoverIndicator
-							primary
-							disabled={!draftTask.name}
-							onClick={() => {
-								submitDraftTask();
+							round
+							onClick={() => setSelectedTaskId(task._id)}
+						>
+							<TaskContent task={task} />
+						</Box>
+					))
+				)}
+				{draftTask ? (
+					<Box pad="medium">
+						<Input
+							type="text"
+							placeholder="Task Name"
+							onChange={(e) => {
+								setDraftTaskName(e.target.value);
 							}}
-							label="Add"
+							value={draftTask.name}
 						/>
-						<Button
-							hoverIndicator
-							secondary
-							label="Cancel"
-							onClick={() => {
-								deleteDraftTask();
-							}}
-						/>
+						<Box justify="center" direction="row-responsive" margin="small">
+							<HStack spacing={4}>
+								<Button
+									disabled={!draftTask.name}
+									onClick={() => {
+										submitDraftTask();
+									}}
+								>
+									Add
+								</Button>
+								<Button
+									onClick={() => {
+										deleteDraftTask();
+									}}
+								>
+									Cancel
+								</Button>
+							</HStack>
+						</Box>
 					</Box>
-				</Box>
-			) : (
-				<Box pad="medium">
-					<Button
-						hoverIndicator
-						primary
-						onClick={() => createDraftTask()}
-						label="Add Task"
-					/>
-				</Box>
-			)}
+				) : (
+					<Box pad="medium">
+						<Button onClick={() => createDraftTask()}>Add Task</Button>
+					</Box>
+				)}
+			</Stack>
 			<TaskDetailModal
 				project={currentProject}
 				task={selectedTask}
 				unselectTask={setSelectedTaskId}
 			/>
-		</Box>
+		</Flex>
 	);
 }

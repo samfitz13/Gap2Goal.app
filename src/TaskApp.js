@@ -1,72 +1,133 @@
 import React from "react";
-import { Box, Clock, Footer, Grommet, Header, Heading, Main } from "grommet";
+import {
+	Box,
+	Button,
+	Drawer,
+	DrawerContent,
+	DrawerOverlay,
+	Flex,
+	Icon,
+	IconButton,
+	Link,
+	useColorMode,
+	useColorModeValue,
+	useDisclosure,
+} from "@chakra-ui/react";
+import { AiFillGithub } from "react-icons/ai";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { FiMenu } from "react-icons/fi";
 
 import { useRealmApp } from "./RealmApp";
 import ProjectScreen from "./components/ProjectScreen";
 import Sidebar from "./components/Sidebar";
-
-const theme = {
-	global: {
-		colors: {
-			"light-2": "#f5f5f5",
-			text: {
-				light: "rgba(0, 0, 0, 0.87)",
-			},
-		},
-		edgeSize: {
-			small: "14px",
-		},
-		elevation: {
-			light: {
-				medium:
-					"0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)",
-			},
-		},
-		font: {
-			family: "Roboto",
-			size: "16px",
-			height: "20px",
-		},
-	},
-};
+import Footer from "./components/Footer";
 
 export default function TaskApp() {
 	const app = useRealmApp();
+	const sidebar = useDisclosure();
 	const [currentProject, setCurrentProject] = React.useState(
 		// set the current project as  "My Project"
 		app.currentUser.customData.memberOf[0]
 	);
 	const [isEditingPermissions, setIsEditingPermissions] = React.useState(false);
+	const text = useColorModeValue("dark", "light");
+	const SwitchIcon = useColorModeValue(FaMoon, FaSun);
+	const { toggleColorMode: toggleMode } = useColorMode();
+
 	return (
-		<Grommet theme={theme}>
-			<Header background="brand">
-				<Heading color="light-2" margin="small" level={2} responsive>
-					Gap2Goal.app
-				</Heading>
-				<Clock type="digital" hourLimit={12} />
-			</Header>
-			<Box
-				gap='small'
-				direction="row"
-				pad="small"
-				border={{ color: "brand", size: "large" }}
+		<Box
+			as="section"
+			bg={useColorModeValue("gray.50", "gray.700")}
+			minH="100vh"
+		>
+			<Sidebar
+				display={{ base: "none", md: "unset" }}
+				currentProject={currentProject}
+				setCurrentProject={setCurrentProject}
+				setIsEditingPermissions={setIsEditingPermissions}
+			/>
+			<Drawer
+				isOpen={sidebar.isOpen}
+				onClose={sidebar.onClose}
+				placement="left"
 			>
-				<Sidebar
-					currentProject={currentProject}
-					setCurrentProject={setCurrentProject}
-					setIsEditingPermissions={setIsEditingPermissions}
-				/>
-				<Main>
+				<DrawerOverlay />
+				<DrawerContent>
+					<Sidebar
+						w="full"
+						borderRight="none"
+						currentProject={currentProject}
+						setCurrentProject={setCurrentProject}
+						setIsEditingPermissions={setIsEditingPermissions}
+					/>
+				</DrawerContent>
+			</Drawer>
+			<Box ml={{ base: 0, md: 60 }} transition=".3s ease">
+				<Flex
+					as="header"
+					align="center"
+					justify="space-between"
+					w="full"
+					px="4"
+					bg={useColorModeValue("white", "gray.800")}
+					borderBottomWidth="1px"
+					borderColor="blackAlpha.300"
+					h="14"
+				>
+					<IconButton
+						aria-label="menu"
+						display={{ base: "inline-flex", md: "none" }}
+						onClick={sidebar.onOpen}
+						icon={<FiMenu />}
+						size="sm"
+					/>
+					<Flex
+						justify="flex-end"
+						w="full"
+						maxW="824px"
+						align="center"
+						color="gray.400"
+					>
+						<Flex align="center">
+							<Link isExternal aria-label="GitHub" href="">
+								<Icon
+									as={AiFillGithub}
+									display="block"
+									transition="color 0.2s"
+									w="5"
+									h="5"
+									_hover={{ color: "gray.600" }}
+								/>
+							</Link>
+						</Flex>
+						<IconButton
+							size="md"
+							fontSize="lg"
+							aria-label={`Switch to ${text} mode`}
+							variant="ghost"
+							color="current"
+							ml={{ base: "0", md: "3" }}
+							onClick={toggleMode}
+							icon={<SwitchIcon />}
+						/>
+						<Button
+							onClick={() => {
+								app.logOut();
+							}}
+						>
+							Log Out
+						</Button>
+					</Flex>
+				</Flex>
+				<Box as="main" p="4">
 					<ProjectScreen
 						currentProject={currentProject}
 						isEditingPermissions={isEditingPermissions}
 						setIsEditingPermissions={setIsEditingPermissions}
 					/>
-				</Main>
+					<Footer />
+				</Box>
 			</Box>
-			<Footer background="brand" pad="medium">
-				a samfitz project
-			</Footer>
-		</Grommet>
+		</Box>
 	);
 }

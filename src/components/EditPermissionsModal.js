@@ -2,14 +2,15 @@ import React from "react";
 import {
 	Box,
 	Button,
-	Form,
-	FormField,
-	Heading,
-	Layer,
+	Input,
+	Modal,
+	ModalBody,
+	ModalCloseButton,
+	ModalContent,
+	ModalHeader,
+	ModalOverlay,
 	Text,
-	TextInput,
-} from "grommet";
-import { Close } from "grommet-icons";
+} from "@chakra-ui/react";
 
 import { useRealmApp } from "../RealmApp";
 
@@ -58,65 +59,55 @@ export default function EditPermissionsModal({
 	};
 
 	return (
-		<Box>
-			{isEditingPermissions && (
-				<Layer
-					responsive
-					modal
-					animate="fadeIn"
-					onEsc={handleCancel}
-					onClickOutside={handleCancel}
-				>
-					<Box pad="medium">
-						<Heading level={2}>Team Members</Heading>
-						<Text size="small" margin="xsmall">
-							These users can add, read, modify, and delete tasks in your
-							project
-						</Text>
-						<Text margin="xsmall" size="small">
-							Add a new user by email:
-						</Text>
-						<AddTeamMemberInput
-							addTeamMember={addTeamMember}
-							errorMessage={errorMessage}
-						/>
-						<Box>
-							{teamMembers?.length ? (
-								teamMembers.map((teamMember, i) => {
-									return (
-										<Button
-											secondary
-											reverse
-											margin='small'
-											label={teamMember.name}
-											icon={<Close />}
-											size="small"
-											color={`accent-${(i + 1) % 4}`}
-											onClick={async () => {
-												await removeTeamMember(teamMember.name);
-											}}
-										/>
-									);
-								})
-							) : (
-								<Text size="small" margin="xsmall">
-									No team members
-								</Text>
-							)}
-						</Box>
+		<Modal isOpen={isEditingPermissions} onClose={handleCancel}>
+			<ModalOverlay />
+			<ModalContent>
+				<ModalHeader>Team Members</ModalHeader>
+				<ModalCloseButton />
+				<ModalBody>
+					<Text>
+						These users can add, read, modify, and delete tasks in your project
+					</Text>
+					<Text>
+						Add a new user by email:
+					</Text>
+					<AddTeamMemberInput
+						addTeamMember={addTeamMember}
+						errorMessage={errorMessage}
+					/>
+					<Box>
+						{teamMembers?.length ? (
+							teamMembers.map((teamMember, i) => {
+								return (
+									<Button
+										secondary
+										reverse
+										margin="small"
+										size="small"
+										color={`accent-${(i + 1) % 4}`}
+										onClick={async () => {
+											await removeTeamMember(teamMember.name);
+										}}
+									>{teamMember.name}</Button>
+								);
+							})
+						) : (
+							<Text size="small" margin="xsmall">
+								No team members
+							</Text>
+						)}
 					</Box>
-				</Layer>
-			)}
-		</Box>
+				</ModalBody>
+			</ModalContent>
+		</Modal>
 	);
 }
 
 const AddTeamMemberInput = ({ addTeamMember, errorMessage }) => {
 	const [inputValue, setInputValue] = React.useState("");
 	return (
-		<Form>
-			<FormField>
-				<TextInput
+		<Box>
+				<Input
 					type="email"
 					placeholder="some.email@example.com"
 					onChange={(e) => {
@@ -124,11 +115,7 @@ const AddTeamMemberInput = ({ addTeamMember, errorMessage }) => {
 					}}
 					value={inputValue}
 				/>
-			</FormField>
-			<FormField>
 				<Button
-					primary
-					label="Add to Project"
 					disabled={!inputValue}
 					onClick={async () => {
 						const result = await addTeamMember(inputValue);
@@ -136,8 +123,7 @@ const AddTeamMemberInput = ({ addTeamMember, errorMessage }) => {
 							setInputValue("");
 						}
 					}}
-				/>
-			</FormField>
-		</Form>
+				>Add to Project</Button>
+		</Box>
 	);
 };
