@@ -24,7 +24,7 @@ export default function ProjectScreen({
 	setIsEditingPermissions,
 }) {
 	return (
-		<Flex justify='center'>
+		<Flex justify="center">
 			{currentProject && <TaskList currentProject={currentProject} />}
 			<EditPermissionsModal
 				isEditingPermissions={isEditingPermissions}
@@ -37,13 +37,16 @@ export default function ProjectScreen({
 function useDraftTask({ addTask }) {
 	const [draftTask, setDraftTask] = React.useState(null);
 	const createDraftTask = () => {
-		setDraftTask({ name: "" });
+		setDraftTask({ name: "", description: "" });
 	};
 	const deleteDraftTask = () => {
 		setDraftTask(null);
 	};
 	const setDraftTaskName = (name) => {
 		setDraftTask({ name });
+	};
+	const setDraftTaskDescription = (description) => {
+		setDraftTask({ description });
 	};
 	const submitDraftTask = async () => {
 		await addTask(draftTask);
@@ -55,6 +58,7 @@ function useDraftTask({ addTask }) {
 		deleteDraftTask,
 		setDraftTaskName,
 		submitDraftTask,
+		setDraftTaskDescription,
 	};
 }
 
@@ -70,6 +74,7 @@ function TaskList({ currentProject }) {
 		deleteDraftTask,
 		setDraftTaskName,
 		submitDraftTask,
+		setDraftTaskDescription,
 	} = useDraftTask({ addTask });
 
 	return loading ? (
@@ -92,9 +97,7 @@ function TaskList({ currentProject }) {
 					</Box>
 				) : (
 					tasks.map((task) => (
-						<Box
-							onClick={() => setSelectedTaskId(task._id)}
-						>
+						<Box onClick={() => setSelectedTaskId(task._id)}>
 							<TaskContent task={task} />
 						</Box>
 					))
@@ -109,10 +112,19 @@ function TaskList({ currentProject }) {
 							}}
 							value={draftTask.name}
 						/>
+						<Input
+							type="text"
+							placeholder="Task Description"
+							onChange={(e) => {
+								setDraftTaskDescription(e.target.value);
+							}}
+							value={draftTask.description}
+						/>
 						<Box justify="center" direction="row-responsive">
 							<HStack spacing={4}>
 								<Button
 									disabled={!draftTask.name}
+									colorScheme="blue"
 									onClick={() => {
 										submitDraftTask();
 									}}
@@ -120,6 +132,7 @@ function TaskList({ currentProject }) {
 									Add
 								</Button>
 								<Button
+									colorScheme="red"
 									onClick={() => {
 										deleteDraftTask();
 									}}

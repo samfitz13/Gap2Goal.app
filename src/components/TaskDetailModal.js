@@ -14,14 +14,14 @@ import {
 	useToast,
 } from "@chakra-ui/react";
 
-import useTasks from "../graphql/useTasks";
+import useTaskMutations from '../graphql/useTaskMutations'
 import TaskContent from "./TaskContent";
 import useChangeTaskStatusButton from "./useChangeTaskStatusButton";
 
 export default function TaskDetailModal({ project, task, unselectTask }) {
 	const ChangeTaskStatusButton = useChangeTaskStatusButton(project);
+	const { deleteTask } = useTaskMutations(project);
 	const toast = useToast();
-	const { deleteTask } = useTasks(project);
 
 	return (
 		<Box>
@@ -95,7 +95,7 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 							<Spacer />
 							<Button
 								onClick={() => {
-									deleteTask({ taskId: task._id });
+									deleteTask(task);
 									unselectTask();
 								}}
 							>
