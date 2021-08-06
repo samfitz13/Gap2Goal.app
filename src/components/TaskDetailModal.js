@@ -14,7 +14,7 @@ import {
 	useToast,
 } from "@chakra-ui/react";
 
-import useTaskMutations from '../graphql/useTaskMutations'
+import useTaskMutations from "../graphql/useTaskMutations";
 import TaskContent from "./TaskContent";
 import useChangeTaskStatusButton from "./useChangeTaskStatusButton";
 
@@ -97,6 +97,7 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 								onClick={() => {
 									deleteTask(task);
 									unselectTask();
+									
 								}}
 							>
 								Delete
