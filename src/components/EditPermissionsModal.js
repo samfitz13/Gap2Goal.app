@@ -1,15 +1,22 @@
 import React from "react";
 import {
-	Box,
 	Button,
 	Input,
+	InputGroup,
+	InputRightElement,
 	Modal,
 	ModalBody,
 	ModalCloseButton,
 	ModalContent,
 	ModalHeader,
 	ModalOverlay,
+	Tag,
+	TagCloseButton,
+	TagLabel,
 	Text,
+	VStack,
+	Wrap,
+	WrapItem,
 } from "@chakra-ui/react";
 
 import { useRealmApp } from "../RealmApp";
@@ -65,38 +72,39 @@ export default function EditPermissionsModal({
 				<ModalHeader>Team Members</ModalHeader>
 				<ModalCloseButton />
 				<ModalBody>
-					<Text>
-						These users can add, read, modify, and delete tasks in your project
-					</Text>
-					<Text>
-						Add a new user by email:
-					</Text>
-					<AddTeamMemberInput
-						addTeamMember={addTeamMember}
-						errorMessage={errorMessage}
-					/>
-					<Box>
-						{teamMembers?.length ? (
-							teamMembers.map((teamMember, i) => {
-								return (
-									<Button
-										secondary
-										reverse
-										margin="small"
-										size="small"
-										color={`accent-${(i + 1) % 4}`}
-										onClick={async () => {
-											await removeTeamMember(teamMember.name);
-										}}
-									>{teamMember.name}</Button>
-								);
-							})
-						) : (
-							<Text size="small" margin="xsmall">
-								No team members
-							</Text>
-						)}
-					</Box>
+					<VStack spacing="4" align="start">
+						<Text>
+							These users can add, read, modify, and delete tasks in your
+							project
+						</Text>
+						<Text>Add a new user by email:</Text>
+						<AddTeamMemberInput
+							addTeamMember={addTeamMember}
+							errorMessage={errorMessage}
+						/>
+						<Wrap spacing="30px" justify="center">
+							{teamMembers?.length ? (
+								teamMembers.map((teamMember, i) => {
+									return (
+										<WrapItem>
+											<Tag size="md" borderRadius="full">
+												<TagLabel>{teamMember.name}</TagLabel>
+												<TagCloseButton
+													onClick={async () => {
+														await removeTeamMember(teamMember.name);
+													}}
+												/>
+											</Tag>
+										</WrapItem>
+									);
+								})
+							) : (
+								<Text size="small" margin="xsmall">
+									No team members
+								</Text>
+							)}
+						</Wrap>
+					</VStack>
 				</ModalBody>
 			</ModalContent>
 		</Modal>
@@ -106,24 +114,30 @@ export default function EditPermissionsModal({
 const AddTeamMemberInput = ({ addTeamMember, errorMessage }) => {
 	const [inputValue, setInputValue] = React.useState("");
 	return (
-		<Box>
-				<Input
-					type="email"
-					placeholder="some.email@example.com"
-					onChange={(e) => {
-						setInputValue(e.target.value);
-					}}
-					value={inputValue}
-				/>
+		<InputGroup>
+			<Input
+				type="email"
+				placeholder="some.email@example.com"
+				onChange={(e) => {
+					setInputValue(e.target.value);
+				}}
+				value={inputValue}
+			/>
+			<InputRightElement width="4.5rem">
 				<Button
 					disabled={!inputValue}
+					h="1.75rem"
+					size="sm"
 					onClick={async () => {
 						const result = await addTeamMember(inputValue);
 						if (!result?.error) {
 							setInputValue("");
 						}
 					}}
-				>Add to Project</Button>
-		</Box>
+				>
+					Add
+				</Button>
+			</InputRightElement>
+		</InputGroup>
 	);
 };

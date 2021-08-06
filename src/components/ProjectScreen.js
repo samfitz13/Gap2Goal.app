@@ -2,6 +2,7 @@ import React from "react";
 import {
 	Box,
 	Button,
+	Center,
 	Flex,
 	Heading,
 	HStack,
@@ -9,6 +10,7 @@ import {
 	Spinner,
 	Stack,
 	Text,
+	VStack,
 } from "@chakra-ui/react";
 
 import useTasks from "../graphql/useTasks";
@@ -91,8 +93,6 @@ function TaskList({ currentProject }) {
 				) : (
 					tasks.map((task) => (
 						<Box
-							hoverIndicator
-							round
 							onClick={() => setSelectedTaskId(task._id)}
 						>
 							<TaskContent task={task} />
@@ -100,7 +100,7 @@ function TaskList({ currentProject }) {
 					))
 				)}
 				{draftTask ? (
-					<Box pad="medium">
+					<VStack spacing={4}>
 						<Input
 							type="text"
 							placeholder="Task Name"
@@ -109,7 +109,7 @@ function TaskList({ currentProject }) {
 							}}
 							value={draftTask.name}
 						/>
-						<Box justify="center" direction="row-responsive" margin="small">
+						<Box justify="center" direction="row-responsive">
 							<HStack spacing={4}>
 								<Button
 									disabled={!draftTask.name}
@@ -128,11 +128,11 @@ function TaskList({ currentProject }) {
 								</Button>
 							</HStack>
 						</Box>
-					</Box>
+					</VStack>
 				) : (
-					<Box pad="medium">
+					<Center>
 						<Button onClick={() => createDraftTask()}>Add Task</Button>
-					</Box>
+					</Center>
 				)}
 			</Stack>
 			<TaskDetailModal

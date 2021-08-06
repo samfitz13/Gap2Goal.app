@@ -9,8 +9,11 @@ export default function TaskContent({ task }) {
 			mx="auto"
 			px={8}
 			py={4}
-			maxW="2xl"
-			shadow="lg"
+			w='fill'
+			shadow='sm'
+			_hover={{
+				shadow: '2xl',
+			}}
 			borderWidth="1px"
 			bg={useColorModeValue("white", "gray.800")}
 		>

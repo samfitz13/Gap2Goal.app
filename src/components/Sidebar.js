@@ -7,18 +7,18 @@ import {
 	Flex,
 	Heading,
 	Image,
-	Link,
 	Stack,
 	Text,
 	useColorModeValue,
 } from "@chakra-ui/react";
+import { BsCodeSlash } from "react-icons/bs";
 
 import { useRealmApp } from "../RealmApp";
 import useProjects from "../graphql/useProjects";
 
 function UserDetails({ user, handleLogout, handleEditPermissions }) {
 	return (
-		<Center py={6}>
+		<Center p={2}>
 			<Box
 				maxW={"270px"}
 				w={"full"}
@@ -51,8 +51,6 @@ function UserDetails({ user, handleLogout, handleEditPermissions }) {
 							{user.profile.email}
 						</Heading>
 						<Button onClick={handleEditPermissions}>Manage My Project</Button>
-						<br />
-						<Button onClick={handleLogout}>Log Out</Button>
 					</Stack>
 				</Box>
 			</Box>
@@ -85,7 +83,8 @@ const Sidebar = (
 			{...props}
 		>
 			<Flex px="4" py="5" align="center">
-				<Text fontSize="lg" fontWeight="extrabold">
+				<BsCodeSlash size="medium" />
+				<Text fontSize="2xl" ml="2" fontWeight="semibold">
 					Gap2Goal.app
 				</Text>
 			</Flex>
@@ -98,33 +97,24 @@ const Sidebar = (
 			>
 				<Box>
 					{projects.map((project) => (
-						<>
-							<Link
-								style={{ textDecoration: "none" }}
-								onClick={() => setCurrentProject(project)}
-							>
-								<Flex
-									align="center"
-									p="4"
-									mx="4"
-									borderRadius="lg"
-									role="group"
-									cursor="pointer"
-									_hover={{
-										bg: "teal.400",
-										color: "white",
-									}}
-								>
-									<Text
-										fontWeight={
-											project.name === currentProject ? "bold" : "normal"
-										}
-									>
-										{project.name}
-									</Text>
-								</Flex>
-							</Link>
-						</>
+						<Flex
+							align="center"
+							px="4"
+							mx="2"
+							rounded="md"
+							py="3"
+							cursor="pointer"
+							onClick={() => setCurrentProject(project)}
+							_hover={{
+								bg: "blackAlpha.300",
+								color: "whiteAlpha.900",
+							}}
+							role="group"
+							fontWeight="semibold"
+							transition=".15s ease"
+						>
+							{project.name}
+						</Flex>
 					))}
 				</Box>
 				<UserDetails

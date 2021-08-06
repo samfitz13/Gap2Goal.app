@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { AiFillGithub } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
-import { FiMenu } from "react-icons/fi";
+import { FiMenu, FiLogOut } from "react-icons/fi";
 
 import { useRealmApp } from "./RealmApp";
 import ProjectScreen from "./components/ProjectScreen";
@@ -49,6 +49,7 @@ export default function TaskApp() {
 			<Drawer
 				isOpen={sidebar.isOpen}
 				onClose={sidebar.onClose}
+				onEsc={sidebar.onClose}
 				placement="left"
 			>
 				<DrawerOverlay />
@@ -114,19 +115,21 @@ export default function TaskApp() {
 							onClick={() => {
 								app.logOut();
 							}}
+							colorScheme='blue'
+							rightIcon={<FiLogOut />}
 						>
 							Log Out
 						</Button>
 					</Flex>
 				</Flex>
-				<Box as="main" p="4">
+				<Flex direction='column' as="main" p="4" >
 					<ProjectScreen
 						currentProject={currentProject}
 						isEditingPermissions={isEditingPermissions}
 						setIsEditingPermissions={setIsEditingPermissions}
 					/>
 					<Footer />
-				</Box>
+				</Flex>
 			</Box>
 		</Box>
 	);

@@ -20,6 +20,7 @@ import useChangeTaskStatusButton from "./useChangeTaskStatusButton";
 export default function TaskDetailModal({ project, task, unselectTask }) {
 	const ChangeTaskStatusButton = useChangeTaskStatusButton(project);
 	const toast = useToast();
+
 	return (
 		<Box>
 			{task && (
@@ -91,7 +92,7 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 							</Button>
 							<Spacer />
 							<Button
-								onClick={() =>
+								onClick={() => {
 									toast({
 										title: "Feature Coming Soon!",
 										description:
@@ -100,8 +101,8 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 										duration: 5000,
 										isClosable: toast,
 										position: "top",
-									})
-								}
+									});
+								}}
 							>
 								Delete
 							</Button>
