@@ -14,12 +14,14 @@ import {
 	useToast,
 } from "@chakra-ui/react";
 
+import useTasks from "../graphql/useTasks";
 import TaskContent from "./TaskContent";
 import useChangeTaskStatusButton from "./useChangeTaskStatusButton";
 
 export default function TaskDetailModal({ project, task, unselectTask }) {
 	const ChangeTaskStatusButton = useChangeTaskStatusButton(project);
 	const toast = useToast();
+	const { deleteTask } = useTasks(project);
 
 	return (
 		<Box>
@@ -44,7 +46,7 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 								</Box>
 							)}
 							{task.status === "InProgress" && (
-								<Box pad="medium">
+								<Box>
 									<ChangeTaskStatusButton
 										task={task}
 										fromStatus="InProgress"
@@ -93,15 +95,8 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 							<Spacer />
 							<Button
 								onClick={() => {
-									toast({
-										title: "Feature Coming Soon!",
-										description:
-											"I'm adding more functionality every day, so stay tuned for frequent updates",
-										status: "warning",
-										duration: 5000,
-										isClosable: toast,
-										position: "top",
-									});
+									deleteTask({ taskId: task._id });
+									unselectTask();
 								}}
 							>
 								Delete

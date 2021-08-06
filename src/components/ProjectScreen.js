@@ -24,13 +24,13 @@ export default function ProjectScreen({
 	setIsEditingPermissions,
 }) {
 	return (
-		<Box>
+		<Flex justify='center'>
 			{currentProject && <TaskList currentProject={currentProject} />}
 			<EditPermissionsModal
 				isEditingPermissions={isEditingPermissions}
 				setIsEditingPermissions={setIsEditingPermissions}
 			/>
-		</Box>
+		</Flex>
 	);
 }
 
