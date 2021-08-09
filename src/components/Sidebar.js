@@ -1,62 +1,10 @@
 import React from "react";
-import {
-	Avatar,
-	Box,
-	Button,
-	Center,
-	Flex,
-	Heading,
-	Image,
-	Stack,
-	Text,
-	useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Flex, Icon, Text, useColorModeValue } from "@chakra-ui/react";
 import { BsCodeSlash } from "react-icons/bs";
 
 import { useRealmApp } from "../RealmApp";
 import useProjects from "../graphql/useProjects";
-
-function UserDetails({ user, handleLogout, handleEditPermissions }) {
-	return (
-		<Center p={2}>
-			<Box
-				maxW={"270px"}
-				w={"full"}
-				bg={useColorModeValue("white", "gray.800")}
-				boxShadow={"2xl"}
-				rounded="md"
-				overflow="hidden"
-				p="5"
-			>
-				<Image
-					h={"120px"}
-					w={"full"}
-					src={
-						"https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-					}
-					objectFit={"cover"}
-				/>
-				<Flex justify={"center"} mt={-12}>
-					<Avatar
-						size={"xl"}
-						alt={"Author"}
-						css={{
-							border: "2px solid white",
-						}}
-					/>
-				</Flex>
-				<Box p={6}>
-					<Stack spacing={2} align="center" mb={5}>
-						<Heading fontSize="2xl" fontWeight={500} fontFamily="body">
-							{user.profile.email}
-						</Heading>
-						<Button onClick={handleEditPermissions}>Manage My Project</Button>
-					</Stack>
-				</Box>
-			</Box>
-		</Center>
-	);
-}
+import { UserDetails } from "./UserDetails";
 
 const Sidebar = (
 	{ currentProject, setCurrentProject, setIsEditingPermissions },
@@ -79,11 +27,11 @@ const Sidebar = (
 			bg={useColorModeValue("gray.100", "gray.900")}
 			borderColor="blackAlpha.300"
 			borderRightWidth="1px"
-			w={{ base: "full", md: 60 }}
+			w={{ base: "0", md: 60 }}
 			{...props}
 		>
 			<Flex px="4" py="5" align="center">
-				<BsCodeSlash size="medium" />
+				<Icon as={BsCodeSlash} size="" />
 				<Text fontSize="2xl" ml="2" fontWeight="semibold">
 					Gap2Goal.app
 				</Text>
@@ -119,12 +67,7 @@ const Sidebar = (
 				</Box>
 				<UserDetails
 					user={app.currentUser}
-					handleLogout={() => {
-						app.logOut();
-					}}
-					handleEditPermissions={() => {
-						setIsEditingPermissions(true);
-					}}
+					handleEditPermissions={() => setIsEditingPermissions(true)}
 				/>
 			</Flex>
 		</Box>

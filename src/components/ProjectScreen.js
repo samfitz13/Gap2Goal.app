@@ -89,7 +89,10 @@ function TaskList({ currentProject }) {
 			/>
 		</Box>
 	) : (
-		<Flex>
+		<Flex direction='column'>
+			<Heading alignSelf='center' size='lg' paddingBottom='4'>
+				{currentProject.name}
+			</Heading>
 			<Stack spacing={4}>
 				{tasks.length === 0 ? (
 					<Box>
@@ -127,6 +130,9 @@ function TaskList({ currentProject }) {
 									disabled={!draftTask.name}
 									colorScheme="blue"
 									onClick={() => {
+										alert(
+											`Submitting ${draftTask.name}: ${draftTask.description}`
+										);
 										submitDraftTask();
 									}}
 								>
@@ -146,7 +152,9 @@ function TaskList({ currentProject }) {
 					</VStack>
 				) : (
 					<Center>
-						<Button onClick={() => createDraftTask()}>Add Task</Button>
+						<Button colorScheme="green" onClick={() => createDraftTask()}>
+							Add Task
+						</Button>
 					</Center>
 				)}
 			</Stack>

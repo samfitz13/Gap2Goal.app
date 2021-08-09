@@ -41,7 +41,9 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 										fromStatus="Open"
 										toStatus="InProgress"
 									>
-										<Heading fontSize="lg">Start Progress</Heading>
+										<Heading paddingBottom="4" fontSize="lg">
+											Start Progress
+										</Heading>
 									</ChangeTaskStatusButton>
 								</Box>
 							)}
@@ -52,25 +54,31 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 										fromStatus="InProgress"
 										toStatus="Open"
 									>
-										<Heading fontSize="lg">Stop Progress</Heading>
+										<Heading paddingBottom="4" fontSize="lg">
+											Stop Progress
+										</Heading>
 									</ChangeTaskStatusButton>
 									<ChangeTaskStatusButton
 										task={task}
 										fromStatus="InProgress"
 										toStatus="Complete"
 									>
-										<Heading fontSize="lg">Complete Task</Heading>
+										<Heading paddingBottom="4" fontSize="lg">
+											Complete Task
+										</Heading>
 									</ChangeTaskStatusButton>
 								</Box>
 							)}
 							{task.status === "Complete" && (
-								<Box pad="medium">
+								<Box>
 									<ChangeTaskStatusButton
 										task={task}
 										fromStatus="Complete"
 										toStatus="InProgress"
 									>
-										<Heading fontSize="lg">Resume Task</Heading>
+										<Heading paddingBottom="4" fontSize="lg">
+											Resume Task
+										</Heading>
 									</ChangeTaskStatusButton>
 								</Box>
 							)}

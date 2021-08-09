@@ -21,6 +21,7 @@ import { useRealmApp } from "./RealmApp";
 import ProjectScreen from "./components/ProjectScreen";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
+import MobileSidebar from "./components/MobileSidebar";
 
 export default function TaskApp() {
 	const app = useRealmApp();
@@ -54,9 +55,7 @@ export default function TaskApp() {
 			>
 				<DrawerOverlay />
 				<DrawerContent>
-					<Sidebar
-						w="full"
-						borderRight="none"
+					<MobileSidebar
 						currentProject={currentProject}
 						setCurrentProject={setCurrentProject}
 						setIsEditingPermissions={setIsEditingPermissions}

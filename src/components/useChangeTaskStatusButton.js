@@ -10,17 +10,17 @@ export default function useChangeTaskStatusButton(project) {
 	const ChangeTaskStatusButton = ({ task, fromStatus, toStatus, children }) => {
 		return (
 			<Box
-			mx="auto"
-			px={8}
-			py={4}
-			maxW="2xl"
-			shadow="lg"
-			borderWidth="1px"
-			onClick={() => updateTask(task, { status: toStatus })}
-			bg={useColorModeValue("white", "gray.800")}
-		>
-					{children}
-					<StatusChange from={fromStatus} to={toStatus} />
+				mx="auto"
+				px={8}
+				py={4}
+				maxW="2xl"
+				shadow="lg"
+				borderWidth="1px"
+				onClick={() => updateTask(task, { status: toStatus })}
+				bg={useColorModeValue("white", "gray.800")}
+			>
+				{children}
+				<StatusChange from={fromStatus} to={toStatus} />
 			</Box>
 		);
 	};
