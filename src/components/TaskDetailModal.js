@@ -96,8 +96,14 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 							<Button
 								onClick={() => {
 									deleteTask(task);
+									toast({
+										title: "Task Deleted Successfully",
+										status: "success",
+										duration: 5000,
+										isClosable: toast,
+										position: "top",
+									});
 									unselectTask();
-									
 								}}
 							>
 								Delete
