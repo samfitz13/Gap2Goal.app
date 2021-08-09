@@ -2,6 +2,7 @@ import {
 	Box,
 	Button,
 	Container,
+	Spacer,
 	Stack,
 	Text,
 	useColorModeValue,
@@ -25,6 +26,7 @@ export default function Footer() {
 				align={{ base: "center", md: "center" }}
 			>
 				<Text>Made by samfitz. All rights reserved</Text>
+				<Spacer />
 				<Stack direction={"row"} spacing={6}>
 					<Button
 						bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}

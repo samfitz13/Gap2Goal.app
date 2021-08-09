@@ -9,16 +9,18 @@ export default function TaskContent({ task }) {
 			mx="auto"
 			px={8}
 			py={4}
-			w='fill'
-			shadow='sm'
+			maxW="3xl"
+			shadow="sm"
 			_hover={{
-				shadow: '2xl',
+				shadow: "2xl",
 			}}
 			borderWidth="1px"
 			bg={useColorModeValue("white", "gray.800")}
 		>
-			<Flex justifyContent="space-between" slignItems="center">
-				<Heading fontSize="lg">{task.name}</Heading>
+			<Flex justify="space-between">
+				<Heading justifyContent="start" flexWrap="wrap" fontSize="lg">
+					{task.name}
+				</Heading>
 				<StatusBadge status={task.status} />
 			</Flex>
 			<Box mt={2}>

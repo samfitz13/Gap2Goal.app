@@ -1,11 +1,18 @@
 import React from "react";
-import { Tag } from "@chakra-ui/react";
+import { Box, Tag, TagLabel } from "@chakra-ui/react";
 
 export default function StatusBadge({ status }) {
 	return (
-		<Tag colorScheme={getColorForStatus(status)}>
-			{getTaskStatusDisplayName(status)}
-		</Tag>
+		<Box paddingInlineStart='2'>
+			<Tag
+				maxH="1rem"
+				size="lg"
+				variant="subtle"
+				colorScheme={getColorForStatus(status)}
+			>
+				<TagLabel>{getTaskStatusDisplayName(status)}</TagLabel>
+			</Tag>
+		</Box>
 	);
 }
 
