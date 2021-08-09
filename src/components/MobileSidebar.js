@@ -1,19 +1,11 @@
 import React from "react";
 import {
-	Avatar,
 	Box,
-	Button,
-	Center,
 	DrawerBody,
 	DrawerCloseButton,
 	DrawerHeader,
 	Flex,
 	Heading,
-	Icon,
-	Image,
-	Stack,
-	Text,
-	useColorModeValue,
 } from "@chakra-ui/react";
 
 import { useRealmApp } from "../RealmApp";
