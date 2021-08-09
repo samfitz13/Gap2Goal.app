@@ -17,6 +17,7 @@ import useTasks from "../graphql/useTasks";
 import TaskContent from "./TaskContent";
 import TaskDetailModal from "./TaskDetailModal";
 import EditPermissionsModal from "./EditPermissionsModal";
+import { FiTrash2 } from "react-icons/fi";
 
 export default function ProjectScreen({
 	currentProject,
@@ -132,6 +133,7 @@ function TaskList({ currentProject }) {
 									Add
 								</Button>
 								<Button
+									rightIcon={<FiTrash2 />}
 									colorScheme="red"
 									onClick={() => {
 										deleteDraftTask();
