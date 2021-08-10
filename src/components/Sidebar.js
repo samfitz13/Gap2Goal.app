@@ -31,7 +31,7 @@ const Sidebar = (
 			{...props}
 		>
 			<Flex px="4" py="5" align="center">
-				<Icon as={BsCodeSlash} size="" />
+				<Icon as={BsCodeSlash} />
 				<Text fontSize="2xl" ml="2" fontWeight="semibold">
 					Gap2Goal.app
 				</Text>

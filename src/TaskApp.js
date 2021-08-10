@@ -6,6 +6,7 @@ import {
 	DrawerContent,
 	DrawerOverlay,
 	Flex,
+	Heading,
 	Icon,
 	IconButton,
 	Link,
@@ -69,11 +70,16 @@ export default function TaskApp() {
 					justify="space-between"
 					w="full"
 					px="4"
+					direction="row"
 					bg={useColorModeValue("white", "gray.800")}
 					borderBottomWidth="1px"
 					borderColor="blackAlpha.300"
 					h="14"
 				>
+					<Heading size="md" whiteSpace="nowrap">
+						{currentProject.name}
+					</Heading>
+
 					<IconButton
 						aria-label="menu"
 						display={{ base: "inline-flex", md: "none" }}
@@ -89,7 +95,7 @@ export default function TaskApp() {
 						color="gray.400"
 					>
 						<Flex align="center">
-							<Link isExternal aria-label="GitHub" href="">
+							<Link isExternal aria-label="GitHub" href="Github.com">
 								<Icon
 									as={AiFillGithub}
 									display="block"
@@ -111,25 +117,26 @@ export default function TaskApp() {
 							icon={<SwitchIcon />}
 						/>
 						<Button
+							ml={{ base: "0", md: "3" }}
 							onClick={() => {
 								app.logOut();
 							}}
-							colorScheme='blue'
+							colorScheme="blue"
 							rightIcon={<FiLogOut />}
 						>
 							Log Out
 						</Button>
 					</Flex>
 				</Flex>
-				<Flex direction='column' as="main" p="4" >
+				<Flex direction="column" as="main" p="4">
 					<ProjectScreen
 						currentProject={currentProject}
 						isEditingPermissions={isEditingPermissions}
 						setIsEditingPermissions={setIsEditingPermissions}
 					/>
-					<Footer />
 				</Flex>
 			</Box>
+			<Footer />
 		</Box>
 	);
 }

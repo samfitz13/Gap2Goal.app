@@ -9,15 +9,21 @@ import {
 	Input,
 	Spinner,
 	Stack,
+	Tab,
+	Tabs,
+	TabList,
+	TabPanel,
+	TabPanels,
 	Text,
 	VStack,
 } from "@chakra-ui/react";
+import { FiTrash2 } from "react-icons/fi";
 
-import useTasks from "../graphql/useTasks";
+import EditPermissionsModal from "./EditPermissionsModal";
+import StatsScreen from "./StatsScreen";
 import TaskContent from "./TaskContent";
 import TaskDetailModal from "./TaskDetailModal";
-import EditPermissionsModal from "./EditPermissionsModal";
-import { FiTrash2 } from "react-icons/fi";
+import useTasks from "../graphql/useTasks";
 
 export default function ProjectScreen({
 	currentProject,
@@ -25,13 +31,27 @@ export default function ProjectScreen({
 	setIsEditingPermissions,
 }) {
 	return (
-		<Flex justify="center">
-			{currentProject && <TaskList currentProject={currentProject} />}
-			<EditPermissionsModal
-				isEditingPermissions={isEditingPermissions}
-				setIsEditingPermissions={setIsEditingPermissions}
-			/>
-		</Flex>
+		<Tabs>
+			<TabList>
+				<Tab>Task List</Tab>
+				<Tab>Stats</Tab>
+			</TabList>
+
+			<TabPanels>
+				<TabPanel>
+					<Flex justify="center">
+						{currentProject && <TaskList currentProject={currentProject} />}
+						<EditPermissionsModal
+							isEditingPermissions={isEditingPermissions}
+							setIsEditingPermissions={setIsEditingPermissions}
+						/>
+					</Flex>
+				</TabPanel>
+				<TabPanel>
+					<StatsScreen currentProject={currentProject} />
+				</TabPanel>
+			</TabPanels>
+		</Tabs>
 	);
 }
 
@@ -89,10 +109,7 @@ function TaskList({ currentProject }) {
 			/>
 		</Box>
 	) : (
-		<Flex direction='column'>
-			<Heading alignSelf='center' size='lg' paddingBottom='4'>
-				{currentProject.name}
-			</Heading>
+		<Flex direction="column">
 			<Stack spacing={4}>
 				{tasks.length === 0 ? (
 					<Box>
