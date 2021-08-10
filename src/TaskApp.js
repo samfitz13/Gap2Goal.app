@@ -76,17 +76,18 @@ export default function TaskApp() {
 					borderColor="blackAlpha.300"
 					h="14"
 				>
-					<Heading size="md" whiteSpace="nowrap">
-						{currentProject.name}
-					</Heading>
-
+					{" "}
 					<IconButton
 						aria-label="menu"
 						display={{ base: "inline-flex", md: "none" }}
+						marginEnd="4"
 						onClick={sidebar.onOpen}
 						icon={<FiMenu />}
 						size="sm"
 					/>
+					<Heading size="md" whiteSpace="nowrap">
+						{currentProject.name}
+					</Heading>
 					<Flex
 						justify="flex-end"
 						w="full"
