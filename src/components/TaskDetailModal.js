@@ -3,6 +3,7 @@ import {
 	Box,
 	Button,
 	Heading,
+	Input,
 	Modal,
 	ModalBody,
 	ModalCloseButton,
@@ -10,6 +11,12 @@ import {
 	ModalFooter,
 	ModalHeader,
 	ModalOverlay,
+	Popover,
+	PopoverBody,
+	PopoverCloseButton,
+	PopoverContent,
+	PopoverHeader,
+	PopoverTrigger,
 	Spacer,
 	useToast,
 } from "@chakra-ui/react";
@@ -20,7 +27,8 @@ import useChangeTaskStatusButton from "./useChangeTaskStatusButton";
 
 export default function TaskDetailModal({ project, task, unselectTask }) {
 	const ChangeTaskStatusButton = useChangeTaskStatusButton(project);
-	const { deleteTask } = useTaskMutations(project);
+	const { deleteTask, updateTask } = useTaskMutations(project);
+	let updateTaskName = null;
 	const toast = useToast();
 
 	return (
@@ -85,21 +93,35 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 						</ModalBody>
 						{/* TODO: #1 Add Edit Functionality */}
 						<ModalFooter>
-							<Button
-								onClick={() =>
-									toast({
-										title: "Feature Coming Soon!",
-										description:
-											"I'm adding more functionality every day, so stay tuned for frequent updates",
-										status: "warning",
-										duration: 5000,
-										isClosable: toast,
-										position: "top",
-									})
-								}
-							>
-								Edit
-							</Button>
+							<Popover>
+								<PopoverTrigger>
+									<Button>Edit</Button>
+								</PopoverTrigger>
+								<PopoverContent>
+									<PopoverHeader>Edit Task Name</PopoverHeader>
+									<PopoverCloseButton />
+									<PopoverBody>
+										<Input
+											placeholder={task.name}
+											value={updateTaskName}
+											onChange={(e) => {
+												updateTaskName = e.target.value;
+											}}
+										/>
+										<Button
+											onClick={() => {
+												if (updateTaskName) {
+													updateTask(task, {
+														name: updateTaskName,
+													});
+												}
+											}}
+										>
+											Save
+										</Button>
+									</PopoverBody>
+								</PopoverContent>
+							</Popover>
 							<Spacer />
 							<Button
 								onClick={() => {
