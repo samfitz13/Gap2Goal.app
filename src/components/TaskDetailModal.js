@@ -83,7 +83,7 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 								</Box>
 							)}
 						</ModalBody>
-						{/* TODO: Add Edit and Delete */}
+						{/* TODO: #1 Add Edit Functionality */}
 						<ModalFooter>
 							<Button
 								onClick={() =>
