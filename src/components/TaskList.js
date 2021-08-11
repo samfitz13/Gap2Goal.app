@@ -48,9 +48,11 @@ export function TaskList({ currentProject }) {
 		<Flex direction="column">
 			<Stack spacing={4}>
 				{tasks.length === 0 ? (
-					<Box>
-						<Heading>No Tasks</Heading>
-						<Text>Click the button below to add a task to this project</Text>
+					<Box p="3" direction="column">
+						<Heading align="center">No Tasks</Heading>
+						<Text align="center">
+							Click the button below to add a task to this project
+						</Text>
 					</Box>
 				) : (
 					tasks.map((task) => (
