@@ -13,6 +13,7 @@ import {
 	VStack,
 } from "@chakra-ui/react";
 import { FiTrash2 } from "react-icons/fi";
+
 import TaskContent from "./TaskContent";
 import TaskDetailModal from "./TaskDetailModal";
 import useTasks from "../graphql/useTasks";
