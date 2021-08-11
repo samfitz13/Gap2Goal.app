@@ -96,7 +96,7 @@ export default function TaskApp() {
 						color="gray.400"
 					>
 						<Flex align="center">
-							<Link isExternal aria-label="GitHub" href="Github.com">
+							<Link isExternal aria-label="GitHub" href="https://www.github.com/samfitz13/gap2goal.app">
 								<Icon
 									as={AiFillGithub}
 									display="block"
