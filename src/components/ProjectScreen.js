@@ -147,9 +147,6 @@ function TaskList({ currentProject }) {
 									disabled={!draftTask.name}
 									colorScheme="blue"
 									onClick={() => {
-										alert(
-											`Submitting ${draftTask.name}: ${draftTask.description}`
-										);
 										submitDraftTask();
 									}}
 								>
