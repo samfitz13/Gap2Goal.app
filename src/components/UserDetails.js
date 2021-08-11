@@ -30,6 +30,7 @@ export function UserDetails({ user, handleEditPermissions }) {
 						"https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
 					}
 					objectFit={"cover"}
+					rounded="lg"
 				/>
 				<Flex justify={"center"} mt={-12}>
 					<Avatar
@@ -41,11 +42,13 @@ export function UserDetails({ user, handleEditPermissions }) {
 					/>
 				</Flex>
 				<Box p={6}>
-					<Stack spacing={2} align="center" mb={5}>
+					<Stack align="center">
 						<Heading fontSize="2xl" fontWeight={500} fontFamily="body">
 							{user.profile.email}
 						</Heading>
-						<Button onClick={handleEditPermissions}>Manage My Project</Button>
+						<Button colorScheme="blue" onClick={handleEditPermissions}>
+							Manage My Project
+						</Button>
 					</Stack>
 				</Box>
 			</Box>
