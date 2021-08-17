@@ -29,6 +29,7 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 	const ChangeTaskStatusButton = useChangeTaskStatusButton(project);
 	const { deleteTask, updateTask } = useTaskMutations(project);
 	let updateTaskName = null;
+	let updateTaskDescription = null;
 	const toast = useToast();
 
 	return (
@@ -108,12 +109,24 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 												updateTaskName = e.target.value;
 											}}
 										/>
+										<Input
+											placeholder={task.description}
+											value={updateTaskDescription}
+											onChange={(e) => {
+												updateTaskDescription = e.target.value;
+											}}
+										 />
 										<Button
 											onClick={() => {
 												if (updateTaskName) {
 													updateTask(task, {
 														name: updateTaskName,
 													});
+												}
+												if (updateTaskDescription) {
+													updateTask(task, {
+														description: updateTaskDescription,
+													})
 												}
 											}}
 										>
