@@ -3,7 +3,7 @@ import { Box, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 
 import StatusBadge from "./StatusBadge";
 
-export default function TaskContent({ task }, showStatusBadge) {
+export default function TaskContent({ task }, statusBadgeDisplay) {
 	return (
 		<Box
 			mx="auto"
@@ -14,7 +14,7 @@ export default function TaskContent({ task }, showStatusBadge) {
 			_hover={{
 				shadow: "2xl",
 			}}
-			w='full'
+			w="full"
 			borderWidth="1px"
 			bg={useColorModeValue("white", "gray.800")}
 		>
@@ -22,7 +22,7 @@ export default function TaskContent({ task }, showStatusBadge) {
 				<Heading justifyContent="start" flexWrap="wrap" fontSize="lg">
 					{task.name}
 				</Heading>
-				<StatusBadge display={showStatusBadge} status={task.status} />
+				<StatusBadge display={statusBadgeDisplay} status={task.status} />
 			</Flex>
 			<Box mt={2}>
 				<Text>{task.description}</Text>

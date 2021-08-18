@@ -32,9 +32,9 @@ export default function Kanban({ currentProject }) {
 	const [selectedTaskId, setSelectedTaskId] = React.useState(null);
 	const selectedTask = getTaskById(selectedTaskId);
 
-	const openTasks = tasks.filter(task => task.status === "Open")
-	const inProgressTasks = tasks.filter(task => task.status === "InProgress")
-	const completeTasks = tasks.filter(task => task.status === "Complete")
+	const openTasks = tasks.filter((task) => task.status === "Open");
+	const inProgressTasks = tasks.filter((task) => task.status === "InProgress");
+	const completeTasks = tasks.filter((task) => task.status === "Complete");
 
 	const {
 		draftTask,
@@ -56,12 +56,12 @@ export default function Kanban({ currentProject }) {
 			/>
 		</Box>
 	) : (
-		<Flex direction='column'>
-			<Stack direction="Row" spacing='2'>
+		<Flex direction="column">
+			<Stack direction="Row" spacing="2">
 				<Stack spacing={4}>
-				<Heading align='center' size='md'>
-			 	Open Tasks
-				</Heading>
+					<Heading align="center" size="md">
+						Open Tasks
+					</Heading>
 					{openTasks.length === 0 ? (
 						<Box p="3" direction="column">
 							<Heading align="center">No Open Tasks</Heading>
@@ -78,8 +78,8 @@ export default function Kanban({ currentProject }) {
 					)}
 				</Stack>
 				<Stack>
-					<Heading align='center' size='md'>
-					In Progress Tasks
+					<Heading align="center" size="md">
+						In Progress Tasks
 					</Heading>
 					{inProgressTasks.length === 0 ? (
 						<Box p="3" direction="column">
@@ -88,15 +88,15 @@ export default function Kanban({ currentProject }) {
 					) : (
 						inProgressTasks.map((task) => (
 							<Box onClick={() => setSelectedTaskId(task._id)}>
-								<TaskContent showStatusBadge={false} task={task} />
+								<TaskContent task={task} statusBadgeDisplay="none" />
 							</Box>
 						))
 					)}
 				</Stack>
 				<Stack>
-				<Heading align='center' size='md'>
-				Completed Tasks
-				</Heading>
+					<Heading align="center" size="md">
+						Completed Tasks
+					</Heading>
 					{completeTasks.length === 0 ? (
 						<Box p="3" direction="column">
 							<Heading align="center">No In Progress Tasks</Heading>
@@ -119,9 +119,7 @@ export default function Kanban({ currentProject }) {
 				<Modal isOpen={draftTask}>
 					<ModalOverlay />
 					<ModalContent>
-						<ModalHeader>
-							Add Task
-						</ModalHeader>
+						<ModalHeader>Add Task</ModalHeader>
 						<ModalCloseButton />
 						<ModalBody>
 							<VStack spacing={4}>
@@ -143,8 +141,8 @@ export default function Kanban({ currentProject }) {
 											disabled={!draftTask.name}
 											colorScheme="blue"
 											onClick={() => {
-													submitDraftTask()}
-											}
+												submitDraftTask();
+											}}
 										>
 											Add
 										</Button>
@@ -159,16 +157,15 @@ export default function Kanban({ currentProject }) {
 								</Box>
 							</VStack>
 						</ModalBody>
-
 					</ModalContent>
 				</Modal>
 			) : (
-			<Center>
-				<Button colorScheme="green" onClick={() => createDraftTask()}>
-					Add Task
-				</Button>
-			</Center>
-		)}
+				<Center>
+					<Button colorScheme="green" onClick={() => createDraftTask()}>
+						Add Task
+					</Button>
+				</Center>
+			)}
 		</Flex>
 	);
 }
