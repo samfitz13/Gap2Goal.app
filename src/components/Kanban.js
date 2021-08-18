@@ -58,12 +58,12 @@ export default function Kanban({ currentProject }) {
       <Flex direction="column" overflowX="scroll">
         <Stack spacing={8} direction="Row">
           {stages.map((stage) => (
-            <Box p={2} m={2} bg={boxColor}>
+            <Box p={2} m={2} bg={boxColor} w='sm'>
               <Heading align="center" size="md">
                 {stage === "InProgress" ? "In Progress" : stage} tasks
               </Heading>
               {tasks.filter((task) => task.status === stage).length === 0 ? (
-                <Box align="center">
+                <Box align="center" pt={20}>
                   No {stage === "InProgress" ? "In Progress" : stage} Tasks
                 </Box>
               ) : (
