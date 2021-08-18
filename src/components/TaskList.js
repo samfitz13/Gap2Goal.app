@@ -80,7 +80,9 @@ export function TaskList({ currentProject }) {
 								<Button
 									disabled={!draftTask.name}
 									colorScheme="blue"
-									onClick={() => submitDraftTask()}
+									onClick={() => {
+											submitDraftTask()}
+									}
 								>
 									Add
 								</Button>
