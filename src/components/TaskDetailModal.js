@@ -49,6 +49,7 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 										task={task}
 										fromStatus="Open"
 										toStatus="InProgress"
+										unselectTask={unselectTask}
 									>
 										<Heading paddingBottom="4" fontSize="lg">
 											Start Progress
@@ -62,6 +63,8 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 										task={task}
 										fromStatus="InProgress"
 										toStatus="Open"
+										unselectTask={unselectTask}
+
 									>
 										<Heading paddingBottom="4" fontSize="lg">
 											Stop Progress
@@ -71,6 +74,8 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 										task={task}
 										fromStatus="InProgress"
 										toStatus="Complete"
+										unselectTask={unselectTask}
+
 									>
 										<Heading paddingBottom="4" fontSize="lg">
 											Complete Task
@@ -84,6 +89,7 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 										task={task}
 										fromStatus="Complete"
 										toStatus="InProgress"
+										unselectTask={unselectTask}
 									>
 										<Heading paddingBottom="4" fontSize="lg">
 											Resume Task
@@ -128,6 +134,7 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 														description: updateTaskDescription,
 													})
 												}
+												unselectTask()
 											}}
 										>
 											Save
