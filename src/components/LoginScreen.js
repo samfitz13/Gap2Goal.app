@@ -16,6 +16,9 @@ import {
 	useColorModeValue,
 	Stack,
 	InputRightElement,
+	Alert,
+	AlertIcon,
+	AlertTitle,
 } from "@chakra-ui/react";
 
 import { useRealmApp } from "../RealmApp";
@@ -48,6 +51,7 @@ export default function LoginScreen() {
 			await app.logIn(Realm.Credentials.emailPassword(email, password));
 		} catch (err) {
 			handleAuthenticationError(err, setError);
+			setIsLoggingIn(false);
 		}
 	};
 
@@ -61,9 +65,11 @@ export default function LoginScreen() {
 				return await handleLogin();
 			} catch (err) {
 				handleAuthenticationError(err, setError);
+				setIsLoggingIn(false);
 			}
 		} else {
 			setError((err) => ({ ...err, email: "Email is invalid." }));
+			setIsLoggingIn(false);
 		}
 	};
 
@@ -155,6 +161,15 @@ export default function LoginScreen() {
 							>
 								{mode === "login" ? "Log In" : "Register"}
 							</Button>
+							{error.email || error.password ? (
+								<Alert status="error">
+									<AlertIcon />
+									<AlertTitle mr={2}>
+										{error.email}
+										{error.password}
+									</AlertTitle>
+								</Alert>
+							) : null}
 						</Stack>
 					</Box>
 					<Box>
