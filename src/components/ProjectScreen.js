@@ -1,6 +1,5 @@
 import React from "react";
 import {
-	Flex,
 	Tab,
 	Tabs,
 	TabList,
@@ -9,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 
 import EditPermissionsModal from "./EditPermissionsModal";
+import Kanban from './Kanban'
 import StatsScreen from "./StatsScreen";
 import { TaskList } from "./TaskList";
 
@@ -21,18 +21,20 @@ export default function ProjectScreen({
 		<Tabs>
 			<TabList>
 				<Tab>Task List</Tab>
+				<Tab>Kanban </Tab>
 				<Tab>Stats</Tab>
 			</TabList>
 
 			<TabPanels>
 				<TabPanel>
-					<Flex justify="center">
 						{currentProject && <TaskList currentProject={currentProject} />}
 						<EditPermissionsModal
 							isEditingPermissions={isEditingPermissions}
 							setIsEditingPermissions={setIsEditingPermissions}
 						/>
-					</Flex>
+				</TabPanel>
+				<TabPanel>
+					<Kanban currentProject={currentProject} />
 				</TabPanel>
 				<TabPanel>
 					<StatsScreen currentProject={currentProject} />
@@ -41,5 +43,3 @@ export default function ProjectScreen({
 		</Tabs>
 	);
 }
-
-
