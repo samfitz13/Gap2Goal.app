@@ -21,7 +21,7 @@ const MobileSidebar = (
 	const app = useRealmApp();
 
 	return (
-		<Box height='100vh'>
+		<Box>
 			<DrawerHeader>
 				<Logo />
 				<DrawerCloseButton />
