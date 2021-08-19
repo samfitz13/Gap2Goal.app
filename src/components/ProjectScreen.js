@@ -1,14 +1,8 @@
 import React from "react";
-import {
-	Tab,
-	Tabs,
-	TabList,
-	TabPanel,
-	TabPanels,
-} from "@chakra-ui/react";
+import { Tab, Tabs, TabList, TabPanel, TabPanels } from "@chakra-ui/react";
 
 import EditPermissionsModal from "./EditPermissionsModal";
-import Kanban from './Kanban'
+import Kanban from "./Kanban";
 import StatsScreen from "./StatsScreen";
 import { TaskList } from "./TaskList";
 
@@ -27,11 +21,11 @@ export default function ProjectScreen({
 
 			<TabPanels>
 				<TabPanel>
-						{currentProject && <TaskList currentProject={currentProject} />}
-						<EditPermissionsModal
-							isEditingPermissions={isEditingPermissions}
-							setIsEditingPermissions={setIsEditingPermissions}
-						/>
+					{currentProject && <TaskList currentProject={currentProject} />}
+					<EditPermissionsModal
+						isEditingPermissions={isEditingPermissions}
+						setIsEditingPermissions={setIsEditingPermissions}
+					/>
 				</TabPanel>
 				<TabPanel>
 					<Kanban currentProject={currentProject} />

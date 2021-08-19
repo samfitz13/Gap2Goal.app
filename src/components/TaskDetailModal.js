@@ -20,6 +20,7 @@ import {
 	Spacer,
 	useToast,
 } from "@chakra-ui/react";
+import { Formik, Form } from "formik";
 
 import useTaskMutations from "../graphql/useTaskMutations";
 import TaskContent from "./TaskContent";
@@ -28,8 +29,6 @@ import useChangeTaskStatusButton from "./useChangeTaskStatusButton";
 export default function TaskDetailModal({ project, task, unselectTask }) {
 	const ChangeTaskStatusButton = useChangeTaskStatusButton(project);
 	const { deleteTask, updateTask } = useTaskMutations(project);
-	let updateTaskName = null;
-	let updateTaskDescription = null;
 	const toast = useToast();
 
 	return (
@@ -64,7 +63,6 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 										fromStatus="InProgress"
 										toStatus="Open"
 										unselectTask={unselectTask}
-
 									>
 										<Heading paddingBottom="4" fontSize="lg">
 											Stop Progress
@@ -75,7 +73,6 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 										fromStatus="InProgress"
 										toStatus="Complete"
 										unselectTask={unselectTask}
-
 									>
 										<Heading paddingBottom="4" fontSize="lg">
 											Complete Task
@@ -108,37 +105,62 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 									<PopoverHeader>Edit Task Name</PopoverHeader>
 									<PopoverCloseButton />
 									<PopoverBody>
-										<Input
-											placeholder={task.name}
-											value={updateTaskName}
-											onChange={(e) => {
-												updateTaskName = e.target.value;
+										<Formik
+											initialValues={{
+												name: task.name,
+												description: task.description,
 											}}
-										/>
-										<Input
-											placeholder={task.description}
-											value={updateTaskDescription}
-											onChange={(e) => {
-												updateTaskDescription = e.target.value;
-											}}
-										 />
-										<Button
-											onClick={() => {
-												if (updateTaskName) {
-													updateTask(task, {
-														name: updateTaskName,
+											onSubmit={(values, actions) => {
+												actions.setSubmitting(true);
+												updateTask(task, {
+													name: values.name,
+													description: values.description,
+												}).then(() => {
+													actions.setSubmitting(false);
+													unselectTask();
+													toast({
+														title: "Task Updated Successfully",
+														status: "success",
+														duration: 5000,
+														isClosable: toast,
+														position: "top",
 													});
-												}
-												if (updateTaskDescription) {
-													updateTask(task, {
-														description: updateTaskDescription,
-													})
-												}
-												unselectTask()
+												});
 											}}
 										>
-											Save
-										</Button>
+											{({
+												values,
+												errors,
+												handleChange,
+												handleBlur,
+												handleSubmit,
+												isSubmitting,
+											}) => (
+												<Form onSubmit={handleSubmit}>
+													<Input
+														type="text"
+														name="name"
+														value={values.name}
+														onBlur={handleBlur}
+														onChange={handleChange}
+													/>
+													<Input
+														type="text"
+														name="description"
+														value={values.description}
+														onBlur={handleBlur}
+														onChange={handleChange}
+													/>
+													<Button
+														type="submit"
+														loading={isSubmitting}
+														disabled={isSubmitting}
+													>
+														Update Task
+													</Button>
+												</Form>
+											)}
+										</Formik>
 									</PopoverBody>
 								</PopoverContent>
 							</Popover>

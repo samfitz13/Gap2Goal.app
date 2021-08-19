@@ -5,7 +5,6 @@ import {
 	DrawerCloseButton,
 	DrawerHeader,
 	Flex,
-	Heading,
 } from "@chakra-ui/react";
 
 import { useRealmApp } from "../RealmApp";
