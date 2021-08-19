@@ -1,9 +1,9 @@
 {
-	"name": "gap2goal",
-	"version": "0.1.0",
+	"name": "gap2goal.app",
+	"version": "0.1.1",
 	"private": true,
 	"dependencies": {
-		"@apollo/client": "^3.4.7",
+		"@apollo/client": "^3.4.8",
 		"@chakra-ui/react": "^1.6.6",
 		"@emotion/react": "^11.4.1",
 		"@emotion/styled": "^11.3.0",
