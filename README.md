@@ -63,11 +63,9 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Gap2Goal.app Screen Shot][product-screenshot]](ProductScreenShot.png)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`project_description`
+This is a simple project management app. I developed this application to learn more about full stack javascript, using a serverless backend. It is built React, Node.js, GraphQL, MongoDB Realm, and hosted with Netlify at [Gap2Goal.app](Gap2Goal.app)
 
 ### Built With
 
