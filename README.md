@@ -1,4 +1,3 @@
-
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -7,6 +6,7 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -14,32 +14,25 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/samfitz13/Gap2Goal.app">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
   <h3 align="center">Gap2Goal.app</h3>
 
   <p align="center">
-    project_description
+    This is a simple project management app. I developed this application to learn more about full stack javascript, using a serverless backend. It is built React, Node.js, GraphQL, MongoDB Realm, and hosted with Netlify at [Gap2Goal.app](Gap2Goal.app)
     <br />
     <a href="https://github.com/samfitz13/Gap2Goal.app"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://gap2goal.netlify.app/">Hosted Demo</a>
+    <a href="https://gap2goal.netlify.app/">Beta Hosted Here</a>
     ·
     <a href="https://github.com/samfitz13/Gap2Goal.app/issues">Report Bug</a>
     ·
     <a href="https://github.com/samfitz13/Gap2Goal.app/issues">Request Feature</a>
   </p>
 </p>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -66,9 +59,8 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
@@ -77,17 +69,16 @@ Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
 `project_description`
 
-
 ### Built With
 
-* [MongoDB Realm](Mongodb.com) - Serverless backend and Database
+- [MongoDB Realm](Mongodb.com) - Serverless backend and Database
   [GraphQL](graphql.org) - Server Query Language
-* [Node.js](nodejs.org/en/) - Dependencies Managed with NPM and never with Yarn
-* [React.js](reactjs.org) - Front End Framework
-* [Chakra-UI](chakra-ui.com) - Component Library
-
+- [Node.js](nodejs.org/en/) - Dependencies Managed with NPM and never with Yarn
+- [React.js](reactjs.org) - Front End Framework
+- [Chakra-UI](chakra-ui.com) - Component Library
 
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
@@ -95,7 +86,8 @@ To get a local copy up and running follow these simple steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
+
+- npm
   ```sh
   npm install npm@latest -g
   ```
@@ -115,15 +107,14 @@ This is an example of how to list things you need to use the software and how to
 
 You'll need to create a free app using mongoDB Realm. Their documentation is very comprehensive. Once created, copy your APP-ID into the App.js File
 
-
 <!-- ROADMAP -->
+
 ## Roadmap
 
 See the [open issues](https://github.com/samfitz13/Gap2Goal.app/issues) for a list of proposed features (and known issues).
 
-
-
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -134,37 +125,31 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-
-
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-
 <!-- CONTACT -->
+
 ## Contact
 
 Your Name - [@therealsamfitz](https://twitter.com/therealsamfitz) - email
 
 Project Link: [https://github.com/samfitz13/Gap2Goal.app](https://github.com/samfitz13/Gap2Goal.app)
 
-
-
 <!-- ACKNOWLEDGEMENTS -->
+
 ## Acknowledgements
 
-* Coco the Dog
-* Allison McBride
-* Stefan Mischook
-
-
-
-
-
+- Coco the Dog
+- Allison McBride
+- Stefan Mischook
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/samfitz13/repo.svg?style=for-the-badge
 [contributors-url]: https://github.com/samfitz13/Gap2Goal.app/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/samfitz13/repo.svg?style=for-the-badge
