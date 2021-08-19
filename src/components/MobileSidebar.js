@@ -11,6 +11,7 @@ import {
 import { useRealmApp } from "../RealmApp";
 import { UserDetails } from "./UserDetails";
 import useProjects from "../graphql/useProjects";
+import Logo from "./Logo";
 
 const MobileSidebar = (
 	{ currentProject, setCurrentProject, setIsEditingPermissions },
@@ -20,9 +21,9 @@ const MobileSidebar = (
 	const app = useRealmApp();
 
 	return (
-		<Box>
+		<Box height='100vh'>
 			<DrawerHeader>
-				<Heading>Gap2Goal.app</Heading>
+				<Logo />
 				<DrawerCloseButton />
 			</DrawerHeader>
 			<DrawerBody>

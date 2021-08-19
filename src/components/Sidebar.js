@@ -5,6 +5,7 @@ import { BsCodeSlash } from "react-icons/bs";
 import { useRealmApp } from "../RealmApp";
 import useProjects from "../graphql/useProjects";
 import { UserDetails } from "./UserDetails";
+import Logo from "./Logo";
 
 const Sidebar = (
 	{ currentProject, setCurrentProject, setIsEditingPermissions },
@@ -31,10 +32,7 @@ const Sidebar = (
 			{...props}
 		>
 			<Flex px="4" py="5" align="center">
-				<Icon as={BsCodeSlash} />
-				<Text fontSize="2xl" ml="2" fontWeight="semibold">
-					Gap2Goal.app
-				</Text>
+				<Logo />
 			</Flex>
 			<Flex
 				direction="column"

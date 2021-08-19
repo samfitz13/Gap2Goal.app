@@ -21,6 +21,7 @@ import {
 	AlertTitle,
 } from "@chakra-ui/react";
 
+import Logo from "./Logo";
 import { useRealmApp } from "../RealmApp";
 
 export default function LoginScreen() {
@@ -76,17 +77,20 @@ export default function LoginScreen() {
 	return (
 		<Box
 			bg={useColorModeValue("gray.50", "inherit")}
-			minH="100vh"
+			align="center"
 			py="12"
 			px={{ base: "4", lg: "8" }}
+			minH="100vh"
 		>
 			{isLoggingIn ? (
 				<Box align="center" justify="center">
-					<Spinner size="lg" thickness="4px" speed="0.65s" />
+					<Logo />
+					<Spinner mt='5' size="lg" thickness="4px" speed="0.65s" />
 				</Box>
 			) : (
 				<Box maxW="md" mx="auto">
-					<Heading textAlign="center" size="xl" fontWeight="extrabold">
+					<Logo />
+					<Heading pt='8' textAlign="center" size="xl" fontWeight="extrabold">
 						{mode === "login" ? "Log In" : "Register"}
 					</Heading>
 					<br /> <br />
