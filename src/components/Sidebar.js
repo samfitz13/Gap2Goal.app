@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, Flex, Icon, Text, useColorModeValue } from "@chakra-ui/react";
-import { BsCodeSlash } from "react-icons/bs";
+import { Box, Flex, useColorModeValue } from "@chakra-ui/react";
 
 import { useRealmApp } from "../RealmApp";
 import useProjects from "../graphql/useProjects";
