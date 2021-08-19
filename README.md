@@ -70,7 +70,7 @@ This is a simple project management app. I developed this application to learn m
 ### Built With
 
 - [MongoDB Realm](Mongodb.com) - Serverless backend and Database
-  [GraphQL](graphql.org) - Server Query Language
+- [GraphQL](graphql.org) - Server Query Language
 - [Node.js](nodejs.org/en/) - Dependencies Managed with NPM and never with Yarn
 - [React.js](reactjs.org) - Front End Framework
 - [Chakra-UI](chakra-ui.com) - Component Library
