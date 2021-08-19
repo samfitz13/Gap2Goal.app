@@ -63,7 +63,7 @@
 
 ## About The Project
 
-[![Gap2Goal.app Screen Shot][product-screenshot]](/ProductScreenShot.png)
+![Product-Screenshot](ProductScreenShot.png "Gap2Goal.app Product Screenshot")
 
 This is a simple project management app. I developed this application to learn more about full stack javascript, using a serverless backend. It is built React, Node.js, GraphQL, MongoDB Realm, and hosted with Netlify at [Gap2Goal.app](Gap2Goal.app)
 
