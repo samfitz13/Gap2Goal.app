@@ -1,9 +1,6 @@
 import React from "react";
 import {
 	Button,
-	FormControl,
-	FormLabel,
-	Heading,
 	Input,
 	InputGroup,
 	InputRightElement,
@@ -13,7 +10,6 @@ import {
 	ModalContent,
 	ModalHeader,
 	ModalOverlay,
-	Switch,
 	Tag,
 	TagCloseButton,
 	TagLabel,
