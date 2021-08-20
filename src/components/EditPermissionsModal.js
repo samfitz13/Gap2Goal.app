@@ -54,12 +54,8 @@ export default function EditPermissionsModal({
 	isEditingPermissions,
 	setIsEditingPermissions,
 }) {
-	const {
-		teamMembers,
-		errorMessage,
-		addTeamMember,
-		removeTeamMember,
-	} = useTeamMembers();
+	const { teamMembers, errorMessage, addTeamMember, removeTeamMember } =
+		useTeamMembers();
 
 	const handleCancel = () => {
 		setIsEditingPermissions(false);
@@ -87,7 +83,7 @@ export default function EditPermissionsModal({
 								teamMembers.map((teamMember, i) => {
 									return (
 										<WrapItem>
-											<Tag size="md" borderRadius="full">
+											<Tag key={i} size="md" borderRadius="full">
 												<TagLabel>{teamMember.name}</TagLabel>
 												<TagCloseButton
 													onClick={async () => {

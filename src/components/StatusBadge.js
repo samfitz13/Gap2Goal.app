@@ -1,9 +1,12 @@
 import React from "react";
 import { Box, Tag, TagLabel } from "@chakra-ui/react";
 
-export default function StatusBadge({ status }) {
+export default function StatusBadge({ status }, statusBadgeDisplay) {
+	
+	const display = statusBadgeDisplay ? "block" : "none";
+	
 	return (
-		<Box paddingInlineStart='2'>
+		<Box paddingInlineStart="2" display={display}>
 			<Tag
 				maxH="1rem"
 				size="lg"

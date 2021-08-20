@@ -65,12 +65,14 @@ export function TaskList({ currentProject }) {
 					<VStack spacing={4}>
 						<Input
 							type="text"
+							maxW="3xl"
 							placeholder="Task Name"
 							onChange={(e) => setDraftTaskName(e.target.value)}
 							value={draftTask.name}
 						/>
 						<Input
 							type="text"
+							maxW="3xl"
 							placeholder="Task Description"
 							onChange={(e) => setDraftTaskDescription(e.target.value)}
 							value={draftTask.description}
@@ -80,7 +82,9 @@ export function TaskList({ currentProject }) {
 								<Button
 									disabled={!draftTask.name}
 									colorScheme="blue"
-									onClick={() => submitDraftTask()}
+									onClick={() => {
+										submitDraftTask();
+									}}
 								>
 									Add
 								</Button>

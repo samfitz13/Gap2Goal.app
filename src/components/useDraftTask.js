@@ -9,10 +9,15 @@ export function useDraftTask({ addTask }) {
 		setDraftTask(null);
 	};
 	const setDraftTaskName = (name) => {
-		setDraftTask({ name });
+		setDraftTask(prevState => ({
+			...prevState,
+			name
+		}));
 	};
 	const setDraftTaskDescription = (description) => {
-		setDraftTask({ description });
+		setDraftTask(prevState => ({
+			...prevState,
+			description }));
 	};
 	const submitDraftTask = async () => {
 		await addTask(draftTask);
