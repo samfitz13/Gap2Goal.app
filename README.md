@@ -21,7 +21,7 @@
   <h3 align="center">Gap2Goal.app</h3>
 
   <p align="center">
-    This is a simple project management app. I developed this application to learn more about full stack javascript, using a serverless backend. It is built React, Node.js, GraphQL, MongoDB Realm, and hosted with Netlify at [Gap2Goal.app](Gap2Goal.app)
+    This is a simple project management app. I developed this application to learn more about full stack javascript, using a serverless backend. It is built React, Node.js, GraphQL, MongoDB Realm, and hosted with Netlify at <a href='https://gap2goal.app'>Gap2Goal.app</a>
     <br />
     <a href="https://github.com/samfitz13/Gap2Goal.app"><strong>Explore the docs »</strong></a>
     <br />
