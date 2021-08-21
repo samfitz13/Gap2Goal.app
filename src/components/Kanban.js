@@ -55,7 +55,7 @@ export default function Kanban({ currentProject }) {
     </Box>
   ) : (
     <Box>
-      <Flex direction="column" overflowX="scroll">
+      <Flex align='center' direction="column" overflowX="scroll">
         <Stack spacing={8} direction="Row">
           {stages.map((stage) => (
             <Box p={2} m={2} bg={boxColor} w='sm'>
