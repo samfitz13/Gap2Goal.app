@@ -1,10 +1,10 @@
 import React from "react";
 import {
 	Box,
+	Button,
 	DrawerBody,
 	DrawerCloseButton,
 	DrawerHeader,
-	Flex,
 } from "@chakra-ui/react";
 
 import { useRealmApp } from "../RealmApp";
@@ -27,17 +27,17 @@ const MobileSidebar = (
 			</DrawerHeader>
 			<DrawerBody>
 				{projects.map((project) => (
-					<Flex
-						align="center"
-						p="4"
-						mx="2"
-						role="group"
-						fontWeight="semibold"
-						outline=""
+					<Button
+						key={project._id}
 						onClick={() => setCurrentProject(project)}
+						align="center"
+						my={2}
+						w="full"
+						colorScheme={project.partition === currentProject.partition ? "blue" : null}
+						fontWeight="semibold"
 					>
 						{project.name}
-					</Flex>
+					</Button>
 				))}
 				<UserDetails
 					user={app.currentUser}

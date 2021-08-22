@@ -12,6 +12,8 @@ const Sidebar = (
 ) => {
 	const projects = useProjects();
 	const app = useRealmApp();
+	const selectedProjectColor = useColorModeValue("gray.300", "gray.700");
+	const selectedProjectTextColor = useColorModeValue("black", "white");
 
 	return (
 		<Box
@@ -46,9 +48,20 @@ const Sidebar = (
 							align="center"
 							px="4"
 							mx="2"
+							my="2"
 							rounded="md"
 							py="3"
 							cursor="pointer"
+							bg={
+								project.partition === currentProject.partition
+									? selectedProjectColor
+									: null
+							}
+							color={
+								project.partition === currentProject.partition
+									? selectedProjectTextColor
+									: null
+							}
 							onClick={() => setCurrentProject(project)}
 							_hover={{
 								bg: "blackAlpha.300",
