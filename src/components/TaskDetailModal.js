@@ -18,6 +18,7 @@ import {
 	PopoverHeader,
 	PopoverTrigger,
 	Spacer,
+	Textarea,
 	useToast,
 } from "@chakra-ui/react";
 import { Formik, Form } from "formik";
@@ -130,7 +131,6 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 										>
 											{({
 												values,
-												errors,
 												handleChange,
 												handleBlur,
 												handleSubmit,
@@ -144,7 +144,7 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 														onBlur={handleBlur}
 														onChange={handleChange}
 													/>
-													<Input
+													<Textarea
 														type="text"
 														name="description"
 														value={values.description}
