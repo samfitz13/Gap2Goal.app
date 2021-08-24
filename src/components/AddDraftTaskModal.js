@@ -42,12 +42,14 @@ export function AddDraftTaskModal(props) {
 							<VStack spacing={4}>
 								<Input
 									label="Task Name"
+									placeholder="Task Name"
 									name="name"
 									onChange={handleChange}
 									value={values.name}
 								/>
 								<Textarea
 									label="Task Description"
+									placeholder="Task Description"
 									name="description"
 									onChange={handleChange}
 									value={values.description}
