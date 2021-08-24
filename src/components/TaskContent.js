@@ -31,7 +31,8 @@ export default function TaskContent({ task }, statusBadgeDisplay) {
 					{task.name}
 				</Heading>
 				<Flex>
-					{task.dueDate && (task.status !== "Complete") ? (
+					{moment(task.dueDate).fromNow().includes("ago") &&
+					task.status !== "Complete" ? (
 						<Tag maxH="1rem" size="lg" colorScheme="red" variant="subtle">
 							Overdue
 						</Tag>
@@ -42,7 +43,7 @@ export default function TaskContent({ task }, statusBadgeDisplay) {
 			<Box mt={2}>
 				<Text>{task.description}</Text>
 				{task.dueDate ? (
-					<Text>Due Date: {moment(task.dueDate).format("MMM Do YYYY")}</Text>
+					<Text>Due Date: {moment(task.dueDate).fromNow()}</Text>
 				) : null}
 			</Box>
 		</Box>
