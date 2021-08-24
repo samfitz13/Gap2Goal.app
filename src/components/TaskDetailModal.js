@@ -21,7 +21,11 @@ import {
 	Textarea,
 	useToast,
 } from "@chakra-ui/react";
+import DatePicker from "react-datepicker";
 import { Formik, Form } from "formik";
+
+import "react-datepicker/dist/react-datepicker.css";
+import "../styles/datePickerStyle.css";
 
 import useTaskMutations from "../graphql/useTaskMutations";
 import TaskContent from "./TaskContent";
@@ -96,7 +100,7 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 								</Box>
 							)}
 						</ModalBody>
-						{/* TODO: #1 Add Edit Functionality */}
+						{/* Complete: #1 Add Edit Functionality */}
 						<ModalFooter>
 							<Popover>
 								<PopoverTrigger>
@@ -110,12 +114,14 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 											initialValues={{
 												name: task.name,
 												description: task.description,
+												dueDate: null,
 											}}
 											onSubmit={(values, actions) => {
 												actions.setSubmitting(true);
 												updateTask(task, {
 													name: values.name,
 													description: values.description,
+													dueDate: values.dueDate,
 												}).then(() => {
 													actions.setSubmitting(false);
 													unselectTask();
@@ -135,6 +141,7 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 												handleBlur,
 												handleSubmit,
 												isSubmitting,
+												setFieldValue,
 											}) => (
 												<Form onSubmit={handleSubmit}>
 													<Input
@@ -150,6 +157,13 @@ export default function TaskDetailModal({ project, task, unselectTask }) {
 														value={values.description}
 														onBlur={handleBlur}
 														onChange={handleChange}
+													/>
+													<DatePicker
+														label="Due Date"
+														name="dueDate"
+														placeholderText='Due Date'
+														selected={values.dueDate}
+														onChange={(date) => setFieldValue("dueDate", date)}
 													/>
 													<Button
 														type="submit"

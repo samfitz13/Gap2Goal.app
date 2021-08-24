@@ -14,7 +14,11 @@ import {
 	Textarea,
 } from "@chakra-ui/react";
 import { FiTrash2 } from "react-icons/fi";
+import DatePicker from "react-datepicker";
 import { Formik } from "formik";
+
+import "react-datepicker/dist/react-datepicker.css";
+import "../styles/datePickerStyle.css";
 
 import useTaskMutations from "../graphql/useTaskMutations";
 
@@ -32,13 +36,14 @@ export function AddDraftTaskModal(props) {
 						initialValues={{
 							name: "",
 							description: "",
+							dueDate: null,
 						}}
 						onSubmit={(values) => {
 							addTask(values);
 							props.onClose();
 						}}
 					>
-						{({ values, handleChange, handleSubmit }) => (
+						{({ values, handleChange, handleSubmit, setFieldValue }) => (
 							<VStack spacing={4}>
 								<Input
 									label="Task Name"
@@ -53,6 +58,14 @@ export function AddDraftTaskModal(props) {
 									name="description"
 									onChange={handleChange}
 									value={values.description}
+								/>
+								<DatePicker
+									label="Due Date"
+									placeholderText="Due Date"
+									name="dueDate"
+									selected={values.dueDate}
+									dateFormat="MMMM d, yyyy"
+									onChange={(date) => setFieldValue("dueDate", date)}
 								/>
 								<Box justify="center" direction="row-responsive">
 									<HStack spacing={4}>
