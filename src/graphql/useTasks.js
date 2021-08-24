@@ -24,6 +24,7 @@ const useAllTasksInProject = (project) => {
 					name
 					status
 					description
+					dueDate
 				}
 			}
 		`,
