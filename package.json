@@ -12,7 +12,7 @@
 		"graphql": "^15.5.1",
 		"graphql-tag": "^2.12.5",
 		"grommet-icons": "^4.6.0",
-		"moment": "^2.29.1",
+		"moment": "^2.29.2",
 		"react": "^16.14.0",
 		"react-datepicker": "^4.2.1",
 		"react-dom": "^16.14.0",
